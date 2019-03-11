@@ -17,3 +17,32 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+
+// toggle password visibility
+$(function () {
+    $('#eye').click(function () {
+        if ($(this).hasClass('fa-eye-slash')) {
+            $(this).removeClass('fa-eye-slash');
+            $(this).addClass('fa-eye');
+            $('#password').attr('type', 'text');
+        } else {
+            $(this).removeClass('fa-eye');
+            $(this).addClass('fa-eye-slash');
+            $('#password').attr('type', 'password');
+        }
+    });
+});
+
+$(function () {
+    $('#eye2').click(function () {
+        if ($(this).hasClass('fa-eye-slash')) {
+            $(this).removeClass('fa-eye-slash');
+            $(this).addClass('fa-eye');
+            $('#password2').attr('type', 'text');
+        } else {
+            $(this).removeClass('fa-eye');
+            $(this).addClass('fa-eye-slash');
+            $('#password2').attr('type', 'password');
+        }
+    });
+});
