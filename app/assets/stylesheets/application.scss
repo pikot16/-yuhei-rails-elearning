@@ -1,5 +1,35 @@
 @import "bootstrap";
 
-.login-form {
-    margin: 20px 0px 0px 0px;
+// *= require font-awesome // No need 不要
+
+i {
+  cursor:pointer;
 }
+
+.navbar-brand {
+  font-size: 32px;
+}
+
+.login-form {
+  margin: 20px 0px 0px 0px;
+}
+
+.top-image {
+  width: 100%;
+}
+
+// .form-row {
+//   float: right;
+// }
+
+.col_1 {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+// .col_2 {
+//   padding-right: 0px;
+// }
