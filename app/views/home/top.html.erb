@@ -6,7 +6,7 @@
         <div class="col-sm-6 col_2">
             <h4 class="text-center">Create New Account</h4>
             <%= form_for @user do |f| %>
-            <%#= form_for(@user, :url => {:controller => :home, :action => :create}) do |f| %>
+            <%# form_for(@user, :url => {:controller => :home, :action => :create}) do |f| %>
                 <%= render "shared/error_messages", object: f.object %>
                 <div class="form-group">
                     <%= f.label :name %>
