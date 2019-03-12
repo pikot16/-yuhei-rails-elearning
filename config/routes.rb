@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get '/users/index', to: 'users#index'
   post '/signup', to: 'users#create'
   get '/dashboard', to: 'sessions#show'
-  get 'login', to: 'sessions#new'
+  get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
   resources :users # ユーザー登録失敗時にURLが/userとなってトップページに戻る
