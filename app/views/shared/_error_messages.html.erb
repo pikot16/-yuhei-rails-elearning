@@ -1,6 +1,6 @@
-<% if object.errors.any? %>
+<% if @user.errors.any? %> <%# @userをobjectのままにするとユーザー編集ページアクセス時にエラーになる %>
     <div class="alert alert-danger">
-        <% object.errors.full_messages.each do |message| %>
+        <% @user.errors.full_messages.each do |message| %>
             <li><%= message %></li>
         <% end %>
     </div>

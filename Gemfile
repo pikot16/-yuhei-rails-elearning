@@ -40,6 +40,10 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bootstrap', '~> 4.1.3'
 gem 'jquery-rails'
 
+# for pagination
+gem 'will_paginate', '~> 3.1.0'
+gem 'will_paginate-bootstrap4'
+
 # gem 'font-awesome-rails' # No need to install this gem 不要だったっぽい
 
 group :development, :test do

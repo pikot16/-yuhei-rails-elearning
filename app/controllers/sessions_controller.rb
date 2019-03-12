@@ -1,5 +1,7 @@
 class SessionsController < ApplicationController
 
+  # any user can edit any user
+  
   def show
     @user = User.find(session[:user_id])
   end

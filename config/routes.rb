@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root 'home#top'
   get '/users', to: 'home#top' # 仮の措置
+  get '/users/index', to: 'users#index'
   post '/signup', to: 'users#create'
   get '/dashboard', to: 'sessions#show'
   get 'login', to: 'sessions#new'
