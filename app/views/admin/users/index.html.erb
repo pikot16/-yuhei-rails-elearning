@@ -1,10 +1,12 @@
-All Users Shown Here
+Users List
 
 <table class="table">
     <thead>
         <tr>
             <th scope="col">Avatar</th>
+            <th scope="col">ID</th>
             <th scope="col">Name</th>
+            <th scope="col">Email</th>
             <th scope="col">Relationship</th>
         </tr>
     </thead>
@@ -12,14 +14,16 @@ All Users Shown Here
         <% @users.each do |user| %>
         <tr>
             <td><%= link_to gravatar_for(user), user %></td>
+            <td><%= user.id %></td>
             <td><%= user.name %></td>
+            <td><%= user.email %></td>
             <td>
                 <% unless current_user?(user) %>
-                    <% if current_user.following?(user) %>
-                        <%= render 'unfollow', user: user %> <%# no need @ because loop user in this page %>
+                    <% if user.admin? %>
+                        <%= link_to 'Remove Admin', admin_user_path(user), method: :put, class: "btn btn-danger" %>
                     <% else %>
-                        <%= render 'follow', user: user %>
-                    <% end %>
+                        <%= link_to 'Set As Admin', admin_user_path(user), method: :put, class: "btn btn-primary" %>
+                    <% end%>
                 <% end %>
             </td>
         </tr>
