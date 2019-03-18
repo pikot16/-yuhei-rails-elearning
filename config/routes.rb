@@ -15,7 +15,13 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :categories
+
   namespace :admin do
     resources :users, only: [:index, :update]
   end
+
+  namespace :admin do
+    resources :categories
+  end  
 end

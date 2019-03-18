@@ -1,5 +1,5 @@
 class Admin::UsersController < AdminController
-  before_action :logged_in_user, only: [:index, :update]
+  before_action :logged_in_user, only: [:index, :update] # adminユーザーかどうかの判断も必要?
   # before_action :correct_user, only: [:edit, :update] これ書いたままで Set As Adminをすると何も起きずにTopに戻ってしまう。
 
   def index
@@ -14,7 +14,7 @@ class Admin::UsersController < AdminController
       @user.update(admin: true)
     end
     redirect_to admin_users_path
-  end  
+  end
   
   private
   def user_params

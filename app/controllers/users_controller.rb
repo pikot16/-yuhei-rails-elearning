@@ -13,7 +13,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    if @user.save
+    if @user.save # これだけでsaveされる
       flash[:success] = "Successfully Signed Up"
       redirect_to root_url
     else
