@@ -42,13 +42,6 @@ class Admin::CategoriesController < AdminController
     end
   end
 
-  # def destroy
-  #   if @category.delete
-  #     flash[:success] = "deleted"
-  #   end
-  #   redirect_to admin_categories_path
-  # end  
-
   def destroy
     Category.find(params[:id]).destroy
     flash[:success] = "Category deleted"

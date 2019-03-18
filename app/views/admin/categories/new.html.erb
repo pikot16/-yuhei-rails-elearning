@@ -1,6 +1,5 @@
 <h4 class="text-center">Category Registration</h4>
-<%#= form_for @category do |f| %>
-<%= form_for(@category, :url => {:controller => :categories, :action => :create}) do |f| %>
+<%= form_for([:admin, @category]) do |f| %>
     <%#= render "shared/error_messages", object: f.object %>
     <div class="form-group">
         <%= f.label :title %>
