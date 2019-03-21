@@ -1,4 +1,5 @@
 class Category < ApplicationRecord
-  validates :title, presence:true, length: { maximum:100, minimum:1 }
-  validates :description, length: { maximum: 100 }
+  has_many :words, dependent: :destroy
+  validates :title, presence:true, length: { maximum:50, minimum:1 }
+  validates :description, length: { maximum: 200 }
 end

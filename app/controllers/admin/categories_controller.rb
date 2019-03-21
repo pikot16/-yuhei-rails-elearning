@@ -25,7 +25,6 @@ class Admin::CategoriesController < AdminController
       flash[:success] = "Successfully Created"
       redirect_to admin_categories_path
     else
-      flash[:warning] = "Incorrect"
       render 'new' # new.html.erb
     end
   end
@@ -37,7 +36,6 @@ class Admin::CategoriesController < AdminController
       redirect_to admin_categories_path # @category ?? # @user ??
       # updateすると更新はされるが/admin/categorires/:idに飛んでアクションがなくてエラーになる
     else
-      flash[:warning] = "Incorrect"
       render 'edit' # edit.html.erb
     end
   end
@@ -66,6 +64,5 @@ class Admin::CategoriesController < AdminController
   
   def category_params
     params.require(:category).permit(:title,:description)
-  end  
-
+  end
 end
