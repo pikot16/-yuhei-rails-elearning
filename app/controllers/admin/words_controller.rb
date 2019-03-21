@@ -9,7 +9,8 @@ class Admin::WordsController < AdminController
 
   def index
     @category = Category.find(params[:category_id])
-    @words = Word.where(category_id: params[:category_id]) # /:id/に一致するwordのみ表示する
+    # @words = Word.where(category_id: params[:category_id])
+    @words = @category.words # refactored from the above code
   end
 
   def edit
@@ -52,9 +53,4 @@ class Admin::WordsController < AdminController
   def word_params
     params.require(:word).permit(:content, choices_attributes: [:id, :content, :correct])
   end
-  
-  # def 
-  #   # check_box
-  #   # collectメソッドで一つしか選べないように
-  # end  
 end
