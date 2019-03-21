@@ -1,0 +1,41 @@
+words shown here
+
+<h4>Words List for Admin</h4>
+
+<%= link_to("Add Word", new_admin_category_word_path(@category)) %></td>
+
+<table class="table" style="table-layout:fixed;width:100%;">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Category_ID</th>
+            <th scope="col">Word</th>
+            <th scope="col">Choice 1</th>
+            <th scope="col">Choice 2</th>
+            <th scope="col">Choice 3</th>
+            <th scope="col">Answer</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @words.each do |word| %>
+        <tr>
+            <td style="word-wrap:break-word;"><%= word.id %></td>
+            <td style="word-wrap:break-word;"><%= word.category_id %></td>
+            <td style="word-wrap:break-word;"><%= word.content %></td>
+            <td style="word-wrap:break-word;"><%= word.choices.first.content %></td>
+            <td style="word-wrap:break-word;"><%= word.choices.second.content %></td>
+            <td style="word-wrap:break-word;"><%= word.choices.third.content %></td>
+            <td style="word-wrap:break-word;"><%= word.choices.find_by(correct: true).content %></td>
+            <td style="word-wrap:break-word;"><%= link_to("Edit Word", edit_admin_category_word_path(@category, word)) %></td>
+            <td style="word-wrap:break-word;">
+                <%= link_to("Delete Word", admin_category_word_path(@category, word), method: :delete, 
+                                    data: { confirm: "Are you sure?"}) %> <%# (category)でid指定 %>
+            </td>
+        </tr>
+        <% end %>
+    </tbody>
+</table>
+
+<%= link_to("Back to Category List", admin_categories_path) %>

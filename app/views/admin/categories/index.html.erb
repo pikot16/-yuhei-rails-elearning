@@ -5,9 +5,11 @@
 <table class="table" style="table-layout:fixed;width:100%;">
     <thead>
         <tr>
+            <th scope="col">ID</th>
             <th scope="col">Title</th>
             <th scope="col">Description</th>
             <th scope="col">Words</th>
+            <th scope="col"></th>
             <th scope="col"></th>
             <th scope="col"></th>
             <th scope="col"></th>
@@ -16,14 +18,16 @@
     <tbody>
         <% @categories.each do |category| %>
         <tr>
+            <td style="word-wrap:break-word;"><%= category.id %></td>
             <td style="word-wrap:break-word;"><%= category.title %></td>
             <td style="word-wrap:break-word;"><%= category.description %></td>
-            <td style="word-wrap:break-word;"><%= "category.words" %></td>
-            <td style="word-wrap:break-word;"><%= link_to("Add Word", "#") %></td>
+            <td style="word-wrap:break-word;"><%= category.words.count %></td>
+            <td style="word-wrap:break-word;"><%= link_to("Add Word", new_admin_category_word_path(category)) %></td>
+            <td style="word-wrap:break-word;"><%= link_to("Show Words", admin_category_words_path(category)) %></td> <%# (word)だとエラー %>
             <td style="word-wrap:break-word;"><%= link_to("Edit", edit_admin_category_path(category)) %></td>
             <td style="word-wrap:break-word;">
                 <%= link_to("Delete", admin_category_path(category), method: :delete, 
-                                    data: { confirm: "You sure?"}) %> <%# (category)でid指定 %>
+                                    data: { confirm: "Are you sure?"}) %> <%# (category)でid指定 %>
             </td>
         </tr>
         <% end %>
