@@ -10,12 +10,15 @@ Rails.application.routes.draw do
   # resources :users # ユーザー登録失敗時にURLが/userとなってトップページに戻る
   resources :relationships, only: [:create, :destroy]
   resources :users do
-    member do
+    member do # ??
       get :following, :followers
     end
   end
 
   resources :categories
+  resources :lessons do
+    resources :answers
+  end  
 
   namespace :admin do
     resources :users, only: [:index, :update]
@@ -25,10 +28,7 @@ Rails.application.routes.draw do
     resources :categories do
       resources :words
     end
-  end  
+  end
+
+
 end
-
-
-# resources :products do
-#     resources :reviews
-# end
