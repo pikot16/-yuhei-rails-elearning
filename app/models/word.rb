@@ -1,5 +1,7 @@
 class Word < ApplicationRecord
   has_many :choices, dependent: :destroy
+  has_many :answers, dependent: :destroy
+  has_many :lessons, through: :answers
   belongs_to :category
   accepts_nested_attributes_for :choices 
   validates :content, presence: true, length: { maximum:50, minimum:1 }
@@ -11,7 +13,7 @@ class Word < ApplicationRecord
               c.correct || nil # false || nil == nil
     end
     if correct.compact.size > 1
-      errors.add(:correct, "can be only one")
+      errors.add(:correct, "can be only one") # エラーを表示させなかったら保存される
     elsif correct.compact.size < 1
       errors.add(:correct, "can't be blank")
     end

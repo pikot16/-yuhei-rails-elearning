@@ -1,1 +1,33 @@
-Category List for Users
+<h4>Categories</h4>
+
+<table class="table" style="table-layout:fixed;width:100%;">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Title</th>
+            <th scope="col">Description</th>
+            <th scope="col">Words</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @categories.each do |category| %>
+        <tr>
+            <td style="word-wrap:break-word;"><%= category.id %></td>
+            <td style="word-wrap:break-word;"><%= category.title %></td>
+            <td style="word-wrap:break-word;"><%= category.description %></td>
+            <td style="word-wrap:break-word;"><%= category.words.count %></td>
+            <td style="word-wrap:break-word;">
+                <%= form_for(@lesson) do |f| %>
+                <%= hidden_field_tag :category_id, category.id %>
+                    <%= button_tag class: 'btn btn-primary pull-right' do %>
+                        <i class="fa fa-book" aria-hidden="true"></i>Learn
+                    <% end %>
+                <% end %>
+            </td>
+        </tr>
+        <% end %>
+    </tbody>
+</table>
+
+<%= will_paginate %>

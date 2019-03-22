@@ -22,7 +22,7 @@
             <td style="word-wrap:break-word;"><%= word.id %></td>
             <td style="word-wrap:break-word;"><%= word.category_id %></td>
             <td style="word-wrap:break-word;"><%= word.content %></td>
-            <td style="word-wrap:break-word;"><%= word.choices.first.content %></td>
+            <td style="word-wrap:break-word;"><%= word.choices.first.content %></td> <%# choices[0]でもOK %>
             <td style="word-wrap:break-word;"><%= word.choices.second.content %></td>
             <td style="word-wrap:break-word;"><%= word.choices.third.content %></td>
             <td style="word-wrap:break-word;"><%= word.choices.find_by(correct: true).content %></td>

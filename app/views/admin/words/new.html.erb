@@ -1,6 +1,5 @@
-add new word
-
 <h4 class="text-center">Word Registration</h4>
+<p><%= "Category: " + @category.title %></p>
 <%= form_for([:admin,:category,@word]) do |f| %> <%# adminの中のcategoryの中のword %>
     <%= render "shared/error_messages", object: f.object %>
     <div class="form-group">
