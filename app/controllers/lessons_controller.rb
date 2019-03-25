@@ -6,6 +6,10 @@ class LessonsController < ApplicationController
     end
   end
 
+  def show
+    @lesson = Lesson.find(params[:id]) # lesson_idではない
+  end
+
 private
   def lesson_params
     params.permit(:category_id).merge(user_id: current_user.id)

@@ -8,6 +8,10 @@ class Word < ApplicationRecord
   
   validate :correct_validation
 
+  def correct_choice
+    choices.find_by(correct: true).content
+  end
+
   def correct_validation
     correct = choices.collect do |c| # @word.choicesと書いてはいけない
               c.correct || nil # false || nil == nil
