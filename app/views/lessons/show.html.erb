@@ -1,1 +1,30 @@
-show result
+Result
+
+<table class="table" style="table-layout:fixed;width:100%;">
+    <thead>
+        <tr>
+            <th scope="col">Word</th>
+            <th scope="col">Correct Answer</th>
+            <th scope="col">Your Answer</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @lesson.answers.each do |answer| %>
+        <tr>
+            <td style="word-wrap:break-word;"><%= answer.word.content %></td>
+            <td style="word-wrap:break-word;"><%= answer.word.correct_choice %></td>
+            <td style="word-wrap:break-word;"><%= answer.choice.content %></td>
+            <td style="word-wrap:break-word;">
+                <% if answer.choice.correct? %>                    
+                    <i class="fas fa-check" style="color:green;"></i>
+                <% elsif %>
+                    <i class="fas fa-times" style="color:red;"></i>
+                <% end %>
+            </td>
+        </tr>
+        <% end %>
+    </tbody>
+</table>
+
+<%= "Your Score: #{@lesson.lesson_result}/#{@lesson.answers.count}" %>
