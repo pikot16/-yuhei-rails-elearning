@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :lessons, dependent: :destroy
+  has_many :activities, dependent: :destroy
   validates :name, presence:true, length: { maximum:25, minimum:2 }
   
   before_save { email.downcase! }
@@ -31,7 +32,7 @@ class User < ApplicationRecord
 
   # ユーザーをフォロー解除する
   def unfollow(other_user)
-    active_relationships.find_by(followed_id: other_user.id).destroy # AwesomeBlogと書き方違う
+    active_relationships.find_by(followed_id: other_user).destroy # AwesomeBlogと書き方違う
   end
 
   # 現在のユーザーがフォローしてたらtrueを返す

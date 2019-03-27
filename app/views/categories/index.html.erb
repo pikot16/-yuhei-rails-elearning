@@ -1,4 +1,4 @@
-<h4>Categories</h4>
+<h3>Categories</h3>
 
 <table class="table" style="table-layout:fixed;width:100%;">
     <thead>
@@ -18,12 +18,18 @@
             <td style="word-wrap:break-word;"><%= category.description %></td>
             <td style="word-wrap:break-word;"><%= category.words.count %></td>
             <td style="word-wrap:break-word;">
+            <% if category.get_lesson(current_user).nil? %>
                 <%= form_for(@lesson) do |f| %>
                 <%= hidden_field_tag :category_id, category.id %>
                     <%= button_tag class: 'btn btn-primary pull-right' do %>
-                        <i class="fa fa-book" aria-hidden="true"></i>Learn
+                        <i class="fa fa-book" aria-hidden="true"></i> Learn
                     <% end %>
                 <% end %>
+            <% else %>
+                <%= link_to lesson_path(category.get_lesson(current_user).id), class: 'btn btn-primary pull-right' do %>
+                    <i class="fa fa-book" aria-hidden="true"></i> Show Result
+                <% end %>
+            <% end %>
             </td>
         </tr>
         <% end %>

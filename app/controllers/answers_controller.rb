@@ -11,6 +11,8 @@ class AnswersController < ApplicationController
     @answer = @lesson.answers.build(answer_params)
     if @answer.save
       if @lesson.next_word.nil?
+        @lesson.update(result: @lesson.lesson_result)
+        @lesson.create_activity(user_id: current_user.id)
         redirect_to lesson_url(@lesson)
       else
         redirect_to new_lesson_answer_url(@lesson)
