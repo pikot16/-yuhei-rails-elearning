@@ -1,0 +1,27 @@
+<h3>Dashboard</h3>
+
+<div class="row">
+    <div class="col-sm-4 card" style="background-color:#fcc5d9;">
+        <p><%= gravatar_for(current_user) %></p>
+        <p><%= current_user.name %></p>
+        <section class="stats">
+            <%= render 'shared/stats' %>
+        </section>
+    </div>
+
+    <div class="col-sm-8" style="background-color:#fcc5d9;">
+        <% @activities.each do |activity| %>
+        <%= gravatar_for(activity.user) %>
+            <% if activity.action_type == "Lesson" %>
+                <%= link_to "#{activity.user.name}", activity.user %>
+                <%= "learned" %>
+                <%= link_to "#{activity.action.category.title}", lesson_path(activity.action.category.id) %>
+            <% elsif activity.action_type == "Relationship" %>
+                <%= link_to "#{activity.user.name}", activity.user %>
+                <%= "followed" %>
+                <%= link_to "#{rel_activity(activity.action.followed_id).name}", rel_activity(activity.action.followed_id) %>
+            <% end %>
+            <hr>
+        <% end %>
+    </div>
+</div>
