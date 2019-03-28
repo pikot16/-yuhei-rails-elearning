@@ -1,4 +1,4 @@
-<h3>Users</h3>
+<h3>Users List</h3>
 
 <table class="table">
     <thead>
@@ -11,7 +11,7 @@
     <tbody>
         <% @users.each do |user| %>
         <tr>
-            <td><%= link_to gravatar_for(user), user %></td>
+            <td><%= link_to gravatar_for(user, size: 50), user %></td>
             <td><%= user.name %></td>
             <td>
                 <% unless current_user?(user) %>

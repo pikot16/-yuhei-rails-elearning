@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
+  get  '/users/:id/words', to: 'users#show_words'
   # resources :users # ユーザー登録失敗時にURLが/userとなってトップページに戻る
   resources :relationships, only: [:create, :destroy]
   resources :users do

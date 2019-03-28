@@ -11,17 +11,22 @@
 </div>
 
 <p>Activities</p>
-<% @activities.each do |activity| %>
-<%= gravatar_for activity.user %>
-    <% if activity.action_type == "Lesson" %>
-        <%= link_to "#{activity.user.name}", activity.user %>
-        <%= "learned" %>
-        <%= link_to "#{activity.action.category.title}", lesson_path(activity.action.category.id) %>
-        
-    <% elsif activity.action_type == "Relationship" %>
-        <%= link_to "#{activity.user.name}", activity.user %>
-        <%= "followed" %>
-        <%= link_to "#{rel_activity(activity.action.followed_id).name}", rel_activity(activity.action.followed_id) %>
+<% if @activities.empty? %>
+    <p>Nothing to show</p>
+<% else %>
+    <% @activities.each do |activity| %>
+        <%= gravatar_for activity.user, size: 50 %>
+        <% if activity.action_type == "Lesson" %>
+            <%= link_to "#{activity.user.name}", activity.user %>
+            <%= "learned" %>
+            <%= link_to "#{activity.action.category.title}", lesson_path(activity.action.category.id) %>
+        <% elsif activity.action_type == "Relationship" %>
+            <%= link_to "#{activity.user.name}", activity.user %>
+            <%= "followed" %>
+            <%= link_to "#{rel_activity(activity.action.followed_id).name}", rel_activity(activity.action.followed_id) %>
+        <% end %>
+        <br>
+        <%= time_ago_in_words(activity.created_at) %> ago.
+        <hr>
     <% end %>
-    <hr>
 <% end %>
