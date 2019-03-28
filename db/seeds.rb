@@ -5,3 +5,29 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+User.create!(name:  "Admin User",
+             email: "user-1@example.com",
+             password:              "password",
+             password_confirmation: "password",
+             admin: true)
+
+30.times do |n|
+  name  = Faker::Name.name
+  email = "user-#{n+2}@example.com"
+  password = "password"
+  User.create!(name:  name,
+               email: email,
+               password:              password,
+               password_confirmation: password)
+end
+
+users = User.order(:created_at).take(6)
+
+# リレーションシップ
+users = User.all
+user  = users.first
+following = users[5..10]
+followers = users[5..10]
+following.each { |followed| user.follow(followed) }
+followers.each { |follower| follower.follow(user) }

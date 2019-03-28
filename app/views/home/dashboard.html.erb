@@ -11,6 +11,7 @@
         <% @lessons.each do |lesson| %>
             <% words_learned += lesson.answers.count %>
         <% end %>
+        <br>
         <%= link_to words_learned, "users/#{current_user.id}/words" %>
         Words learned
     </div>
