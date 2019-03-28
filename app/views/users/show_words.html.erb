@@ -1,0 +1,38 @@
+Words Learned
+
+<table class="table" style="table-layout:fixed;width:100%;">
+    <thead>
+        <tr>
+            <th scope="col">Category</th>
+            <th scope="col">Word</th>
+            <th scope="col">Correct Answer</th>
+            <th scope="col">Your Answer</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <% num_correct = 0 %>
+        <% num_incorrect = 0 %>
+        <% @lessons.each do |lesson| %>
+            <% lesson.answers.each do |answer| %>
+            <tr>
+                <td style="word-wrap:break-word;"><%= lesson.category.title %></td>
+                <td style="word-wrap:break-word;"><%= answer.word.content %></td>
+                <td style="word-wrap:break-word;"><%= answer.word.correct_choice %></td>
+                <td style="word-wrap:break-word;"><%= answer.choice.content %></td>
+                <td style="word-wrap:break-word;">
+                    <% if answer.choice.correct? %>                    
+                        <i class="fas fa-check" style="color:green;"></i>
+                        <% num_correct += 1 %>
+                    <% elsif %>
+                        <i class="fas fa-times" style="color:red;"></i>
+                        <% num_incorrect += 1 %>
+                    <% end %>
+                </td>
+            </tr>
+            <% end %>
+        <% end %>
+    </tbody>
+</table>
+
+<%= "Your Score: #{num_correct}/#{num_correct+num_incorrect}" %>

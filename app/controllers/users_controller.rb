@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:index, :show, :edit, :update]
-  before_action :correct_user, only: [:edit, :update]
+  before_action :logged_in_user, only: [:index, :show, :edit, :update, :show_words]
+  before_action :correct_user, only: [:edit, :update, :show_words]
 
   def index
     # @users = User.paginate(page: params[:page])
@@ -34,7 +34,25 @@ class UsersController < ApplicationController
     else
       render 'edit'
     end
-  end  
+  end
+
+  def following
+    @title = "Following"
+    @user  = User.find(params[:id])
+    @users = @user.following.paginate(page: params[:page])
+    render 'show_follow'
+  end
+
+  def followers
+    @title = "Followers"
+    @user  = User.find(params[:id])
+    @users = @user.followers.paginate(page: params[:page])
+    render 'show_follow'
+  end
+
+  def show_words
+    @lessons = Lesson.where(user_id: current_user.id)
+  end
   
   private
   def user_params
