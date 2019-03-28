@@ -10,7 +10,7 @@
     <% end %>  
 </div>
 
-<p>Activities</p>
+<h4>Activities</h4>
 <% if @activities.empty? %>
     <p>Nothing to show</p>
 <% else %>
@@ -19,11 +19,11 @@
         <% if activity.action_type == "Lesson" %>
             <%= link_to "#{activity.user.name}", activity.user %>
             <%= "learned" %>
-            <%= link_to "#{activity.action.category.title}", lesson_path(activity.action.category.id) %>
+            <%= link_to "#{activity.action.category.title}", lesson_path(activity.action.category.id) %>.
         <% elsif activity.action_type == "Relationship" %>
             <%= link_to "#{activity.user.name}", activity.user %>
             <%= "followed" %>
-            <%= link_to "#{rel_activity(activity.action.followed_id).name}", rel_activity(activity.action.followed_id) %>
+            <%= link_to "#{rel_activity(activity.action.followed_id).name}", rel_activity(activity.action.followed_id) %>.
         <% end %>
         <br>
         <%= time_ago_in_words(activity.created_at) %> ago.
