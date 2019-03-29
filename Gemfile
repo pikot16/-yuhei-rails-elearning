@@ -9,7 +9,6 @@ gem 'rails', '~> 5.2.2'
 
 gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
 # Use mysql as the database for Active Record
-gem 'mysql2', '>= 0.4.4', '< 0.6.0'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
@@ -51,6 +50,8 @@ gem 'will_paginate-bootstrap4'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+
+  gem 'mysql2', '>= 0.4.4', '< 0.6.0'
 end
 
 group :development do
@@ -68,6 +69,10 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
+end
+
+group :production do
+  gem 'pg'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

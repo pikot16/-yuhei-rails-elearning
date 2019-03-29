@@ -19,8 +19,8 @@ class Admin::WordsController < AdminController
   end  
 
   def create
-    category = Category.find(params[:category_id])
-    @word = category.words.build(word_params)
+    @category = Category.find(params[:category_id])
+    @word = @category.words.build(word_params)
     
     if @word.save # 親要素を保存かけてあげることで自動で子要素も保存される
       flash[:success] = "Successfully Created"
